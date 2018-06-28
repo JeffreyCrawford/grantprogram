@@ -4,6 +4,8 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+
+
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
@@ -38,10 +40,31 @@ app.use(function(err, req, res, next) {
 	res.render('error');
 });
 
-PORT = 3001;
 
-app.listen(PORT, function() {
-	console.log("Server listening on port " + PORT)
-})
+
+/* Sequelize config and database connection */
+const Sequelize = require('sequelize');
+const sequelize = new Sequelize('grants', 'root', 'password', {
+  host: 'localhost',
+  dialect: 'mysql',
+  operatorsAliases: false,
+
+  pool: {
+    max: 5,
+    min: 0,
+    acquire: 30000,
+    idle: 10000
+  }
+});
+
+/* Sequelize authentication/connection testing */
+sequelize
+  .authenticate()
+  .then(() => {
+    console.log('Connection has been established successfully.');
+  })
+  .catch(err => {
+    console.error('Unable to connect to the database:', err);
+  });
 
 module.exports = app;
