@@ -3,13 +3,17 @@ import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
-  state = {communitieslist: []}
+  state = {
+    communitieslist: [],
+    bankaccountslist: []
+  }
 
   componentDidMount() {
     fetch('/communities')
       .then(res => res.json())
       .then(communitieslist => this.setState({ communitieslist }));
   }
+  
 
   render() {
     return (

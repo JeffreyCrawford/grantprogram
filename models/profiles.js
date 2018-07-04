@@ -1,5 +1,5 @@
-import counties from "./counties";
-import communities from "./communities";
+var counties = require("./counties");
+var communities = require("./communities");
 
 module.exports = function(sequelize, Sequelize) {
     const Profile = Sequelize.define("profile", {

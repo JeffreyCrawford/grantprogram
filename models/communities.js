@@ -1,6 +1,6 @@
 const communities = module.exports = [
         "Andover Township",
- 
+
         "Ashtabula",
         
         "Ashtabula County",
