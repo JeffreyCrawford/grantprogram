@@ -3,21 +3,19 @@ import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
-  state = {users: []}
+  state = {communitieslist: []}
 
   componentDidMount() {
-    fetch('/users')
+    fetch('/communities')
       .then(res => res.json())
-      .then(users => this.setState({ users }));
+      .then(communitieslist => this.setState({ communitieslist }));
   }
 
   render() {
     return (
       <div className="App">
-        <h1>Users</h1>
-        {this.state.users.map(user =>
-          <div key={user.id}>{user.username}</div>
-        )}
+        <h1>communities</h1>
+        {this.state.communitieslist}
       </div>
     );
   }

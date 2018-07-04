@@ -7,7 +7,7 @@ var logger = require('morgan');
 
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+var communitiesRouter = require('./routes/communities');
 
 var app = express();
 
@@ -22,7 +22,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/communities', communitiesRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -61,7 +61,7 @@ const sequelize = new Sequelize('grants', 'root', 'password', {
 sequelize
   .authenticate()
   .then(() => {
-    console.log('Connection has been established successfully.');
+    console.log('SQL Connection has been established successfully.');
   })
   .catch(err => {
     console.error('Unable to connect to the database:', err);
