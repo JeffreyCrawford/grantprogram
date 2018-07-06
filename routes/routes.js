@@ -1,13 +1,10 @@
 var express = require('express');
 var router = express.Router();
 
+ require("./routeController")
 
 
-var communities = require("../models/communities");
 
 
-module.exports = function (app) {
 
-    router.get('/communities', router);
-
-}
+module.exports = router
